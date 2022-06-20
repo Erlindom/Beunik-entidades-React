@@ -1,0 +1,142 @@
+* {
+    --blanco: #ffffff;
+    --azul_claro: #459ad3;
+    --azul_opaco: #308ecd;
+    --gris: #cccccc;
+    --color-parrafo: #828282;
+    font-family: 'Quicksand', sans-serif;
+    scroll-behavior: smooth;
+  
+  }
+
+
+/* Navegación */
+.contenedor_hamburger {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hamburger {
+    position: fixed;
+    display: none;
+    width: 60px;
+    height: 60px;
+    border: none;
+    margin: 15px;
+    z-index: 50;
+    background: var(--azul_claro);
+    border-radius: 50%;
+}
+
+.hamburger .bar, .hamburger:after, .hamburger:before {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 2px;
+    background-color: var(--blanco);
+    margin: 4px auto;
+    transition: 0.4s;
+}
+
+.hamburger.is-active:before {
+    transform: rotate(-45deg) translate(-3px, 3px);
+}
+
+.hamburger.is-active:after {
+    transform: rotate(45deg) translate(-6px, -6px);
+}
+
+.hamburger.is-active .bar {
+    opacity: 0;
+}
+
+.navegation {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    transition: 0.7s;
+    padding: 10px 0px 10px 0px;
+}
+
+.logo {
+    width: 190px;
+}
+
+.nav_content {
+    display: flex;
+    gap: 40px;
+}
+
+.nav_links {
+    align-items: center;
+    color: var(--blanco);
+    font-size: 12px;
+    letter-spacing: 1px;
+    background-image: linear-gradient(#ffffff, #ffffff);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 5px 0px 5px 0px;
+}
+
+.nav_links:hover, .nav_links:focus {
+    background-size: 100% 2px;
+}
+
+.icon_nav {
+    font-size: 15px;
+    margin-right: 5px;
+}
+
+
+@media (max-width: 1061px) {
+    .nav_content {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 970px) {
+    .features_content {
+        width: 100%;
+    }
+
+    .img_footer {
+        display: none;
+    }
+
+    .contact {
+        margin: auto;
+    }
+}
+
+
+@media (max-width: 900px) {
+    .hamburger {
+        display: block;
+    }
+    .logo {
+        margin-bottom: 15px;
+    }
+    .navegation {
+        left: -100%;
+        height: 100%;
+        background: var(--azul_opaco);
+        justify-content: center;
+        flex-direction: column;
+        transition: none
+    }
+    .nav_content {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav_active {
+        left: 0;
+    }
+}

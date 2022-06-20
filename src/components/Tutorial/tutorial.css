@@ -1,0 +1,126 @@
+* {
+    --blanco: #ffffff;
+    --azul_claro: #459ad3;
+    --azul_opaco: #308ecd;
+    --gris: #cccccc;
+    --color-parrafo: #828282;
+    font-family: 'Quicksand', sans-serif;
+    scroll-behavior: smooth;
+  
+  }
+
+.navegation_contentTutorial  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 50px 10px 50px;
+    background-color: rgb(60, 123, 213);
+    box-sizing: border-box;
+}
+
+.logo_beunikTutorial {
+    width: 190px;
+}
+
+.navLink_tutorial {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--blanco);
+    font-size: 17px;
+    text-decoration: none;
+}
+
+.navIcon_tutorial {
+    font-size: 20px;
+}
+
+.contentTitle_tutorial {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+
+.h1_tutorial {
+    color: var(--azul_opaco);
+    font-size: 30px;
+}
+
+.links_tutorial {
+    display: flex;
+    gap: 200px;
+    cursor: pointer;
+}
+
+.links_anclaTutorial {
+    color: var(--azul_opaco);
+    font-weight: 500;
+    font-size: 19px;
+}
+
+.content_videos {
+    padding: 30px;
+}
+
+.title_tutorials {
+    color: var(--azul_opaco);
+    font-weight: 500;
+    margin-bottom: 60px;
+}
+
+.tutorial_videos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.videos {
+    text-align: center;
+    font-weight: 500;
+    color: var(--color-parrafo);
+}
+
+
+@media (max-width: 568px) {
+    .links_tutorial {
+        gap: 70px;
+    }
+}
+
+@media (max-width: 425px) {
+    .h1_tutorial {
+        font-size: 25px;
+    }
+    .links_tutorial {
+        gap: 40px;
+        
+    }
+    .title_tutorials {
+        font-size: 21px;
+    }
+    .links_anclaTutorial {
+        font-size: 15px;
+    }
+
+    .logo_beunikTutorial {
+        width: 130px;
+    }
+    .navLink_tutorial, .navIcon_tutorial {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 320px) {
+    .navegation_contentTutorial {
+        padding: 10px 20px 10px 20px; 
+    }
+    .links_anclaTutorial {
+        font-size: 13px;
+    }
+}
