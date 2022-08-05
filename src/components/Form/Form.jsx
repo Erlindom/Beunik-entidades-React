@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from "react";
 import "./form.css";
 import { Link } from "react-router-dom";
@@ -106,6 +107,110 @@ class Login extends Component {
       passwordConfirmationError,
     });
     return passwordConfirmationError === "";
+=======
+import React, { Component } from 'react'
+import './form.css'
+import { Link } from 'react-router-dom'
+
+const emailValidator = /^(([^<>()\\.,;:\s@"]+(\.[^<>()\\.,;:\s@"]+)*)|(".+"))@(([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+const passwordValidator = /(?=.*[0-9])(?=.{6,})/
+
+class Login extends Component {
+  constructor () {
+    super()
+    this.state = {
+      emailAddress: '',
+      password: '',
+      passwordConfirmation: '',
+      emailAddressError: '',
+      passwordError: '',
+      passwordConfirmationError: '',
+      changeTab: false,
+      showPassword: false,
+      isFormSubmitted: false
+    }
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.validateEmailAddress = this.validateEmailAddress.bind(this)
+    this.validatePassword = this.validatePassword.bind(this)
+    this.validatePasswordConfirmation = this.validatePasswordConfirmation.bind(
+      this
+    )
+    this.validateField = this.validateField.bind(this)
+  }
+
+  handleChange (event) {
+    console.log(event.target.value)
+    const { name, value } = event.target
+    this.setState({
+      [name]: value
+    })
+  }
+
+  handleBlur (event) {
+    const { name } = event.target
+    this.validateField(name)
+  }
+
+  handleSubmit (event) {
+    event.preventDefault()
+    const formFields = ['emailAddress', 'password', 'passwordConfirmation']
+    let isValid = true
+    formFields.forEach((field) => {
+      isValid = this.validateField(field) && isValid
+    })
+
+    if (isValid) this.setState({ isFormSubmitted: true })
+    else this.setState({ isFormSubmitted: false })
+    return this.state.isFormSubmitted
+  }
+
+  validateField (name) {
+    let isValid = false
+
+    if (name === 'emailAddress') isValid = this.validateEmailAddress()
+    else if (name === 'password') isValid = this.validatePassword()
+    else if (name === 'passwordConfirmation') { isValid = this.validatePasswordConfirmation() }
+    return isValid
+  }
+
+  validateEmailAddress () {
+    let emailAddressError = ''
+    const value = this.state.emailAddress
+    if (value.trim() === '') emailAddressError = 'Este campo es requerido'
+    else if (!emailValidator.test(value)) { emailAddressError = 'Debe de ser un email válido' }
+
+    this.setState({
+      emailAddressError
+    })
+    return emailAddressError === ''
+  }
+
+  validatePassword () {
+    let passwordError = ''
+    const value = this.state.password
+    if (value.trim() === '') passwordError = 'Este campo es requerido'
+    else if (!passwordValidator.test(value)) { passwordError = 'Debe contener al menos 6 caracteres y 1 número' }
+
+    this.setState({
+      passwordError
+    })
+    return passwordError === ''
+  }
+
+  validatePasswordConfirmation () {
+    let passwordConfirmationError = ''
+    const value = this.state.passwordConfirmationError
+    if (this.state.password !== this.state.passwordConfirmation) { passwordConfirmationError = 'Las contraseñas no coinciden' }
+    if (value.trim() === '') { passwordConfirmationError = 'Este campo es requerido' }
+
+    this.setState({
+      passwordConfirmationError
+    })
+    return passwordConfirmationError === ''
+>>>>>>> 3f67a72 (Update v2)
   }
 
   loginClick = () => {
@@ -120,12 +225,21 @@ class Login extends Component {
     })
   }
 
+<<<<<<< HEAD
   render() {
     return (
       <div>
         
         <div className="buttonHome_content">
           <Link to={"/"} className="buttonToHome">
+=======
+  render () {
+    return (
+      <div>
+
+        <div className="buttonHome_content">
+          <Link to={'/'} className="buttonToHome">
+>>>>>>> 3f67a72 (Update v2)
             <div className="arrow">
               <i className="bx bx-left-arrow-alt arrow_icon"></i>
             </div>
@@ -136,7 +250,11 @@ class Login extends Component {
           <div className="tile_form">
 
             <div className="button_content">
+<<<<<<< HEAD
               <div id="btn" style={this.state.changeTab ? { left: "50%" } : { left: "" }}></div>
+=======
+              <div id="btn" style={this.state.changeTab ? { left: '50%' } : { left: '' }}></div>
+>>>>>>> 3f67a72 (Update v2)
               <button onClick={this.loginClick} className="toggle-btn"> Inicia Sesión </button>
               <button onClick={this.registerClick} className="toggle-btn"> Regístrate </button>
             </div>
@@ -144,7 +262,11 @@ class Login extends Component {
             {/* FORM LOGIN */}
 
             <div className="form_content">
+<<<<<<< HEAD
             <form onSubmit={this.handleSubmit} id="login" style={this.state.changeTab ? { display: "none" } : { display: "block" }}>
+=======
+              <form onSubmit={this.handleSubmit} id="login" style={this.state.changeTab ? { display: 'none' } : { display: 'block' }}>
+>>>>>>> 3f67a72 (Update v2)
 
                 <div className="center_text">
                   <h1 className="titles_form">¡Bienvenido de vuelta!</h1>
@@ -157,8 +279,12 @@ class Login extends Component {
                       <i className="bx bx-envelope"></i>
                     </span>
                     <input
+<<<<<<< HEAD
                       className={`input_field ${this.state.emailAddressError &&
                         "error"}`}
+=======
+                      className={`input_field ${this.state.emailAddressError && 'error'}`}
+>>>>>>> 3f67a72 (Update v2)
                       type="email"
                       placeholder="Email"
                       name="emailAddress"
@@ -177,9 +303,14 @@ class Login extends Component {
                   <div className="input_group">
                     <i className="bx bxs-key icon"></i>
                     <input
+<<<<<<< HEAD
                       className={`input_field ${this.state.passwordError &&
                         "error"}`}
                       type={this.state.showPassword ? "text" : "password"}
+=======
+                      className={`input_field ${this.state.passwordError && 'error'}`}
+                      type={this.state.showPassword ? 'text' : 'password'}
+>>>>>>> 3f67a72 (Update v2)
                       placeholder="Contraseña"
                       name="password"
                       value={this.state.password}
@@ -192,6 +323,7 @@ class Login extends Component {
                     )}
                   </div>
 
+<<<<<<< HEAD
                   <label  htmlFor="">
                     <input
                       className="check_separation"
@@ -203,12 +335,26 @@ class Login extends Component {
                     Mostrar Contraseña
                   </label>
                   
+=======
+                  <label htmlFor="showpass" className='pass_label'>
+                    <input
+                      className="check_separation"
+                      type="checkbox"
+                      name='showpass'
+                      id='showpass'
+                      onClick={() => this.setState({ showPassword: !this.state.showPassword })}
+                    />
+                    Mostrar Contraseña
+                  </label>
+
+>>>>>>> 3f67a72 (Update v2)
                   <a href="google.com" className="password_link">¿Olvidaste tu contraseña?</a>
 
                   <button className="submit-btn" type="submit">
                     Iniciar Sesión
                   </button>
                 </div>
+<<<<<<< HEAD
                 
             </form>
 
@@ -220,6 +366,19 @@ class Login extends Component {
               className="form"
               id="register"
             >
+=======
+
+            </form>
+
+            {/* FORM REGISTER */}
+
+            <form
+              style={this.state.changeTab ? { display: 'block' } : { display: 'none' }}
+              onSubmit={this.handleSubmit}
+              className="form"
+              id="register"
+              >
+>>>>>>> 3f67a72 (Update v2)
               <div className="center_text">
                 <h1 className="titles_form">Regístrate</h1>
                 <p className="texts_form">Registra tu entidad</p>
@@ -230,7 +389,11 @@ class Login extends Component {
                   <i className="bx bx-envelope icon"></i>
                   <input
                     className={`input_field ${this.state.emailAddressError &&
+<<<<<<< HEAD
                       "error"}`}
+=======
+                      'error'}`}
+>>>>>>> 3f67a72 (Update v2)
                     type="email"
                     placeholder="Email"
                     name="emailAddress"
@@ -250,8 +413,13 @@ class Login extends Component {
                   <i className="bx bxs-key icon"></i>
                   <input
                     className={`input_field ${this.state.passwordError &&
+<<<<<<< HEAD
                       "error"}`}
                     type={this.state.showPassword ? "text" : "password"}
+=======
+                      'error'}`}
+                    type={this.state.showPassword ? 'text' : 'password'}
+>>>>>>> 3f67a72 (Update v2)
                     placeholder="Contraseña"
                     name="password"
                     value={this.state.password}
@@ -268,8 +436,13 @@ class Login extends Component {
                   <i className="bx bxs-key icon"></i>
                   <input
                     className={`input_field ${this.state
+<<<<<<< HEAD
                       .passwordConfirmationError && "error"}`}
                     type={this.state.showPassword ? "text" : "password"}
+=======
+                      .passwordConfirmationError && 'error'}`}
+                    type={this.state.showPassword ? 'text' : 'password'}
+>>>>>>> 3f67a72 (Update v2)
                     placeholder="Confirmar contraseña"
                     name="passwordConfirmation"
                     value={this.state.passwordConfirmation}
@@ -284,10 +457,19 @@ class Login extends Component {
                   )}
                 </div>
 
+<<<<<<< HEAD
                 <label htmlFor="">
                   <input
                     className="check_separation"
                     type="checkbox"
+=======
+                <label htmlFor="showpass_r" className='pass_label'>
+                  <input
+                    className="check_separation"
+                    type="checkbox"
+                    name='showpass_r'
+                    id='showpass_r'
+>>>>>>> 3f67a72 (Update v2)
                     onClick={() =>
                       this.setState({ showPassword: !this.state.showPassword })
                     }
@@ -310,6 +492,7 @@ class Login extends Component {
                 </button>
               </div>
             </form>
+<<<<<<< HEAD
             </div>
 
        
@@ -321,3 +504,15 @@ class Login extends Component {
 }
 
 export default Login;
+=======
+          </div>
+
+        </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default Login
+>>>>>>> 3f67a72 (Update v2)

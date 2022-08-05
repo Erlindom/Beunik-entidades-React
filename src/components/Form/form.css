@@ -6,7 +6,11 @@
     --color-parrafo: #828282;
     font-family: 'Quicksand', sans-serif;
     scroll-behavior: smooth;
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 3f67a72 (Update v2)
   }
 
 
@@ -159,10 +163,24 @@
     border: 2px solid red;
 }
 
+<<<<<<< HEAD
+=======
+.pass_label {
+    user-select: none;
+}
+
+>>>>>>> 3f67a72 (Update v2)
 .check_separation {
     margin-right: 8px;
 }
 
+<<<<<<< HEAD
+=======
+.formulario_label {
+    user-select: none;
+}
+
+>>>>>>> 3f67a72 (Update v2)
 .password_link {
     color: #000;
 }
